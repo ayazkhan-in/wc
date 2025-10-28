@@ -1,0 +1,325 @@
+﻿Aim : Identify and apply the appropriate HTML tags to develop a webpage. 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>My Profile - Arjun Sharma</title> 
+</head> 
+<body> 
+<header> 
+<h1>Welcome to My Profile</h1> 
+<p>Hello! I am Arjun Sharma, a passionate Computer Science student.</p> </header> 
+<main> 
+<!-- About Me Section --> 
+<section> 
+<h2>About Me</h2> 
+<p><strong>Name:</strong> Arjun Sharma</p> 
+<p><strong>DOB:</strong> 06/02/2000</p> 
+<p> 
+<strong>LinkedIn:</strong> 
+<a href="https://www.linkedin.com/in/arjunsharma-cs" target="_blank"> Visit My Profile 
+</a> 
+</p> 
+</section> 
+<!-- Qualification Section --> 
+<section> 
+<h2>Qualification</h2> 
+<p>Pursuing B.Tech in Computer Science from Zenith University</p> <p>The Global School, 12th Grade</p> 
+<p>City Public Academy, 10th Grade</p> 
+</section> 
+<!-- Leisure Activities Section --> 
+<section> 
+<h2>Leisure Activities</h2> 
+<ol type="A"> 
+<li>Competitive Programming in Python</li> 
+<li>Reading books on Artificial Intelligence</li> 
+<li>Developing personal projects in C++</li>
+</ol> 
+</section> 
+<!-- Future Plans Section --> 
+<section> 
+<h2>Future Plans</h2> 
+<ul> 
+<li>Interested in pursuing M.Tech in Data Science</li> 
+<li>Aspiring for a PhD in Robotics and Computer Vision</li> 
+<li>Aiming to become a Lead Software Architect at a top-tier tech firm</li> </ul> 
+</section> 
+</main> 
+<footer> 
+<p>&copy; 2025 Arjun Sharma. All rights reserved.</p> 
+</footer> 
+</body> 
+</html>
+
+
+
+
+Aim : To identify and apply the appropriate CSS tags in order to format the data on a webpage 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>My Profile - Arjun Sharma</title> 
+<style> 
+/* Basic body styles */ 
+body { 
+font-family: Arial, sans-serif; 
+margin: 0; 
+padding: 0; 
+background-color: #f0f0f5; /* light grey */ 
+color: #333; 
+} 
+/* Header */ 
+header { 
+background-color: #cc0000; /* red */ 
+color: white; 
+text-align: center; 
+padding: 20px; 
+} 
+/* Sections */ 
+section { 
+padding: 15px; 
+margin: 20px; 
+background-color: white; 
+border: 2px solid #cc0000; /* simple border */ 
+} 
+/* Links */ 
+a { 
+color: #cc0000; 
+text-decoration: none; 
+} 
+a:hover { 
+text-decoration: underline; 
+}
+/* Lists spacing */ 
+ol, ul { 
+padding-left: 20px; 
+} 
+/* Footer */ 
+footer { 
+text-align: center; 
+padding: 10px; 
+background-color: #cc0000; 
+color: white; 
+font-size: 14px; 
+margin-top: 20px; 
+} 
+</style> 
+</head> 
+<body> 
+<header> 
+<h1>Welcome to My Profile</h1> 
+</header> 
+<section> 
+<h2>About Me</h2> 
+<p><strong>Name:</strong> Arjun Sharma</p> 
+<p><strong>DOB:</strong> 11/12/2004</p> 
+<p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/arjunsharma-cs" target="_blank">Visit My Profile</a></p> 
+</section> 
+<section> 
+<h2>Qualification</h2> 
+<p>Pursuing B.Tech in Computer Science from Zenith University</p> <p>The Global School, 12th Grade</p> 
+<p>City Public Academy, 10th Grade</p> 
+</section> 
+<section> 
+<h2>Leisure Activities</h2> 
+<ol type="A"> 
+<li>Competitive Programming in Python</li> 
+<li>Reading books on Artificial Intelligence</li> 
+<li>Developing personal projects in C++</li> 
+</ol>
+</section> 
+<section> 
+<h2>Future Plans</h2> 
+<ul> 
+<li>Interested in pursuing M.Tech in Data Science</li> 
+<li>Ambitious for a PhD in Robotics and Computer Vision</li> 
+<li>Aiming for a position as a Lead Software Architect at a top-tier tech firm</li> </ul> 
+</section> 
+<footer> 
+&copy; 2025 Arjun Sharma All rights reserved. 
+</footer> 
+</body> 
+</html>
+
+
+
+
+Aim : To construct a frontend application using React (Simple To-Do List App) using VS Code. import React, { useState } from "react"; 
+function App() { 
+const [tasks, setTasks] = useState([]); 
+const [newTask, setNewTask] = useState(""); 
+const addTask = () => { 
+if (newTask.trim() === "") return; 
+setTasks([...tasks, { text: newTask, completed: false }]); 
+setNewTask(""); 
+}; 
+const toggleTask = (index) => { 
+const updatedTasks = [...tasks]; 
+updatedTasks[index].completed = !updatedTasks[index].completed; 
+setTasks(updatedTasks); 
+}; 
+const deleteTask = (index) => { 
+const updatedTasks = tasks.filter((_, i) => i !== index); 
+setTasks(updatedTasks); 
+}; 
+return ( 
+<div style={styles.container}> 
+<h1 style={styles.heading}>Simple Todo App</h1> 
+<div style={styles.inputContainer}> 
+<input 
+type="text" 
+value={newTask} 
+placeholder="Enter a new task..." 
+onChange={(e) => setNewTask(e.target.value)} 
+style={styles.input} 
+/> 
+<button onClick={addTask} style={styles.addButton}>Add</button> 
+</div> 
+<ul style={styles.list}> 
+{tasks.map((task, index) => ( 
+<li key={index} style={styles.listItem}> 
+<span
+onClick={() => toggleTask(index)} 
+style={{ 
+textDecoration: task.completed ? "line-through" : "none", 
+cursor: "pointer", 
+}} 
+> 
+{task.text} 
+</span> 
+<button 
+onClick={() => deleteTask(index)} 
+style={styles.deleteButton} 
+> 
+✖ 
+</button> 
+</li> 
+))} 
+</ul> 
+</div> 
+); 
+} 
+const styles = { 
+container: { textAlign: "center", marginTop: "50px", fontFamily: "Arial, sans-serif" }, heading: { color: "#333" }, 
+inputContainer: { marginBottom: "20px" }, 
+input: { padding: "10px", width: "200px", marginRight: "10px" }, 
+addButton: { padding: "10px 20px", backgroundColor: "green", color: "white", border: "none", cursor: "pointer" }, 
+list: { listStyle: "none", padding: 0 }, 
+listItem: { display: "flex", justifyContent: "center", alignItems: "center", margin: "5px 0" }, deleteButton: { marginLeft: "10px", backgroundColor: "red", color: "white", border: "none", cursor: "pointer" }, 
+}; 
+export default App;
+
+Steps: 
+1.Make sure node.js and VS Code is installed 
+2.Open terminal in VS Code 
+Type Node-v and npm-v 
+3.ON : Desktop → New → Folder → Web Computing 
+4.In VS Code: 
+Click File → Open Folder→Select the folder Web Computing→Click Select Folder 5.Open the Terminal in VS Code 
+You should see your terminal path like: 
+C:\Users\YourName\Desktop\Web Computing> 
+5.”If path is not like above then change directory”:- cd "C:\Users\DELL\OneDrive\Desktop\Web Computing" 6.In the terminal, type this command: 
+npx create-react-app todo-app 
+7.When done, you’ll see a new folder inside Web Computing named: todo-app 
+Open the App.js File→ In the left sidebar → expand the src folder. Find and click App.js→ Delete all the code inside it and paste react code 8.Run the Application 
+Make sure your terminal is still inside the todo-app folder. 
+If not, type: 
+cd todo-app 
+Then run: 
+npm start
+
+
+
+
+
+Aim : To construct a backend using node.js/express. 
+require('dotenv').config(); 
+const express = require('express'); 
+const morgan = require('morgan'); 
+const cors = require('cors'); 
+const app = express(); 
+// Middleware 
+app.use(express.json()); 
+app.use(morgan('dev')); 
+app.use(cors()); 
+// Routes 
+app.get('/', (req, res) => { 
+res.json({ message: 'Hello, Node.js backend!' }); 
+}); 
+// Start server 
+const PORT = process.env.PORT || 4000; 
+app.listen(PORT, () => { 
+console.log(`Server running on http://localhost:${PORT}`); 
+}); 
+
+
+Steps: 
+1.On your desktop,create a new folder named backend_practical Open VS Code. 
+In VS Code, click File > Open Folder>Select backend_practical folder and open it. 2.Open a terminal inside VS Code 
+The terminal should open with the path to your backend_practical folder. 3.npm init -y 
+4.npm install express morgan cors dotenv 
+5.Create server file > server.js 
+6.Add the code 
+7.Run server: node server.js 
+8.Check server running on: http://localhost:4000/ 
+9.Test server: http://localhost:4000/
+
+
+
+
+AIm : To use javascript to develop interactive webpages. 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Simple Unit Converter</title> 
+<style> 
+body { font-family: Arial, sans-serif; padding: 20px; } 
+label, select, input { margin: 10px 0; display: block; } 
+#result { font-size: 20px; margin-top: 20px; } 
+</style> 
+</head> 
+<body> 
+<h2>Simple Length Unit Converter</h2> 
+<label for="inputValue">Value:</label> 
+<input id="inputValue" type="number" placeholder="Enter value" /> 
+<label for="fromUnit">From:</label> 
+<select id="fromUnit"> 
+<option value="meters">Meters</option> 
+<option value="kilometers">Kilometers</option> 
+<option value="miles">Miles</option> 
+<option value="feet">Feet</option> 
+</select> 
+<label for="toUnit">To:</label> 
+<select id="toUnit"> 
+<option value="meters">Meters</option> 
+<option value="kilometers">Kilometers</option> 
+<option value="miles">Miles</option> 
+<option value="feet">Feet</option> 
+</select> 
+<button onclick="convert()">Convert</button> 
+<div id="result">Result: -</div> 
+<script> 
+// conversion rates relative to meters 
+const rates = {
+meters: 1, 
+kilometers: 1000, 
+miles: 1609.34, 
+feet: 0.3048 
+}; 
+function convert() { 
+const input = parseFloat(document.getElementById('inputValue').value); if (isNaN(input)) { 
+document.getElementById('result').innerText = 'Result: Please enter a valid number'; return; 
+} 
+const fromUnit = document.getElementById('fromUnit').value; 
+const toUnit = document.getElementById('toUnit').value; 
+// convert input to meters first 
+const valueInMeters = input * rates[fromUnit]; 
+// then convert meters to target unit 
+const convertedValue = valueInMeters / rates[toUnit]; 
+document.getElementById('result').innerText = `Result: ${convertedValue.toFixed(4)} ${toUnit}`; 
+} 
+</script> 
+</body> 
+</html>
